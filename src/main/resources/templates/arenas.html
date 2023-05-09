@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Наши клубы</title>
+</head>
+<body>
+<h1>Наши арены для игры в LaserTag</h1>
+<br>
+<table>
+    <tr th:each="QZarArena: ${QZarArenas}"
+        th:value="${QZarArena.id}">
+        <td th:utext="${QZarArena.title}">...</td>
+        <td th:utext="${QZarArena.description}">...</td>
+        <td th:utext="${QZarArena.size}">...</td>
+        <td th:utext="${QZarArena.capacity}">...</td>
+        <td th:utext="${QZarArena.tech}">...</td>
+    </tr>
+</table>
+</body>
+</html>

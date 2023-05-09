@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Q-Strike</title>
+    <style>
+        body {
+            margin-left: 20%;
+        }
+    </style>
+</head>
+<body>
+<h1>Q-Strike </h1> <br>
+<p>Добро пожаловать в нашу сеть ЛазерТаг (QZar) Клубов </p>
+<p>Здесь вы можете забронировать игру на одной из наших арен. Аренда предоставляется на час игры, а для
+бронирования необходимо авторизироваться на нашем сайте.</p>
+
+<nav>
+    <div sec:authorize="isAuthenticated()">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout">
+        </form>
+    </div>
+    </div>
+
+    <div sec:authorize="isAnonymous()">
+        <a href="/login">
+            Вход
+        </a>
+    </div>
+</nav>
+
+<div sec:authorize="isAuthenticated()">
+    <a href="/create">
+        Забронировать игру
+    </a>
+</div>
+
+<a href="/arenas">
+    Список наших арен
+</a>
+
+</body>
+</html>

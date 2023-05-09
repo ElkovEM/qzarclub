@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Панель администратора</title>
+  <link rel="stylesheet" th:href="@{/special.css}" href="static/style.css">
+</head>
+<body>
+<h1>Записи на бронь арены</h1>
+<br>
+<table style="width: 40vw;">
+  <tr>
+    <th>Имя клиента</th>
+    <th>Дата</th>
+    <th>Телефонный номер</th>
+    <th>Почта</th>
+    <th>Арена</th>
+    <th>Кол-во игроков</th>
+    <th>Примечание</th>
+  </tr>
+  <tr th:each="app, iter:${rentals}">
+    <td th:utext="${app.customer}">...</td>
+    <td th:utext="${app.date}">...</td>
+    <td th:utext="${app.phoneNumber}">...</td>
+    <td th:utext="${app.email}">...</td>
+    <td th:utext="${app.arena_id}">...</td>
+    <td th:utext="${app.players}">...</td>
+    <td th:utext="${app.notes}">...</td>
+  </tr>
+</table>
+
+</body>
+</html>

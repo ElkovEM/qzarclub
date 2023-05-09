@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Новая запись</title>
+    <style>
+        .form-rental {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+        .submit-button {
+            display: flex;
+            justify-content: center;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Создать заявку на бронирование арены</h1>
+<div class="form-rental">
+    <p th:text="${error}">...</p>
+    <form action="#" th:action="@{create}" th:object="${UserForm}" method="post">
+        <h2>Детали записи</h2>
+        <p>Имя<input type="text" th:field="*{customer}" required/></p>
+        <p>Дата <input type="date" th:field="*{date}" required/></p>
+        <p>Телефонный номер <input type="text" th:field="*{phoneNumber}" required></p>
+        <p>Электронная почта <input type="email" th:field="*{email}" required></p>
+        <p>Предпочтительная Арена <select name="ArenaSelect" th:field="*{arena_id}" datatype="int">
+            <option th:each="QZarArena: ${QZarArenas}"
+                    th:value="${QZarArena.id}"
+                    th:utext="|${QZarArena.title} ${QZarArena.capacity} ${QZarArena.tech}|"></option>
+        </select></p>
+        <p>Количество игроков <input type="text" th:field="*{players}" required></p>
+        <p>Примечания <input type="text" th:field="*{notes}"/></p>
+        <p><input class="submit-button" type="submit" value="Записаться"/></p>
+    </form>
+</div>
+</body>
+</html>
